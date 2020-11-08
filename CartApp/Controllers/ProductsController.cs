@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CartApp.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class ProductsController : Controller
     {
         private readonly ShopCartDbContext _context;
