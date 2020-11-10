@@ -1,0 +1,34 @@
+﻿@model CartApp.Models.CartProductViewModel
+
+@{
+    ViewData["Title"] = "Add To Cart";
+}
+
+<h4>Add To Cart</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddToCart" enctype="multipart/form-data" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="count" class="control-label"></label>
+                <input asp-for="count" accept="image/*" />
+                <span asp-validation-for="count" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="@Model.Id" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="AddToCart" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

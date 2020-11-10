@@ -1,8 +1,9 @@
 ﻿@model IEnumerable<CartApp.Models.Product>
 @inject SignInManager<IdentityUser> signInManager;
 
+
 @{
-    ViewData["Title"] = "Index";
+        ViewData["Title"] = "Index";
 }
 
 <h1>Sklep</h1>
@@ -16,15 +17,14 @@
 <table class="table">
     <thead>
         <tr>
-
             <th>
                 Image
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                Price
             </th>
             <th></th>
         </tr>
@@ -37,17 +37,23 @@
                     <img src="data:image/jpeg;base64,@Convert.ToBase64String(item.Image)" width="100px" height="100px" />
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @item.Name
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Price)
+                    @item.Price
                 </td>
                 <td>
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a>
-                    @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    @if (signInManager.IsSignedIn(User))
                     {
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                        <a asp-action="Delete" asp - route-id="@item.Id"> Delete </a>
+                        if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id"> Delete </a>
+                        }
+                <div class="nav-item">
+                    <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@item.Id">Add to cart</a>
+                </div>
                     }
 
                 </td>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<CartApp.Models.CartProductViewModel>
+@inject SignInManager<IdentityUser> signInManager;
+
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<h1>Cart</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Image
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Count
+            </th>
+            <th>
+                Subtotal
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="data:image/jpeg;base64,@Convert.ToBase64String(item.image)" width="100px" height="100px" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.count)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.subtotal)
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.Id"> Remove </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div >
+    <a asp-action="Release"> Release </a>
+</div>
