@@ -1,0 +1,60 @@
+﻿@model CartApp.Models.Order
+
+@{
+    ViewData["Title"] = "Order Details";
+}
+
+<h1>Order Details</h1>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class="col-sm-10">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StreetAdress)
+        </dd>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+    </dl>
+</div>
+<table class="table custom-view">
+    <thead>
+        <tr>
+            <th>
+                Product Id
+            </th>
+            <th>
+                Count
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Products)
+        {
+            <tr>
+                <th>
+                    @product.ProductId
+                </th>
+                <th>
+                    @product.Count
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-action="ListOrders">Back to List</a>
+</div>

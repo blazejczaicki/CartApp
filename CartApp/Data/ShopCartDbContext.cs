@@ -18,5 +18,6 @@ namespace CartApp.Data
         public DbSet<Product> ProductSet { get; set; }
         public DbSet<IdentityUser> UserSet { get; set; }
         public DbSet<CartProduct> CartProductSet { get; set; }
+        public DbSet<Order> OrdersSet { get; set; }
     }
 }

@@ -5,12 +5,14 @@ using System.Threading;
 using System.Threading.Tasks;
 using CartApp.Data;
 using CartApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace CartApp.Controllers
 {
+    [Authorize]
     public class CartController : Controller
     {
         private readonly ShopCartDbContext _context;
@@ -35,7 +37,7 @@ namespace CartApp.Controllers
             List<CartProductViewModel> cartProducts = new List<CartProductViewModel>();
             foreach (var item in userProducts)
             {
-                Product product = productSet.Find(x => x.Id == item.Id);
+                Product product = productSet.Find(x => x.Id == item.ProductId);
                 CartProductViewModel cartProduct = new CartProductViewModel {
                     Id = product.Id,
                     image = product.Image,
@@ -95,12 +97,38 @@ namespace CartApp.Controllers
                 var currentUser = await GetCurrentUserAsync();
 
                 order.Products = cartProductSet.FindAll(x => x.UserId == currentUser.Id);
+
                 //usuwanie id przedmiotu i usera
 
                 _context.Add(order);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return View("OrderSent");
             }
+            return View(order);
+        }
+
+        public async Task<IActionResult> ListOrders()
+        {
+            return View(await _context.OrdersSet
+                .Include(x => x.Products)
+                .ToListAsync());
+        }
+
+        public async Task<IActionResult> OrderDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var order = await _context.OrdersSet
+                .Include(x=> x.Products)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (order == null)
+            {
+                return NotFound();
+            }
+
             return View(order);
         }
     }
