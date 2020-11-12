@@ -34,6 +34,8 @@ namespace CartApp.Controllers
 
             var userProducts = cartProductSet.FindAll(x => x.UserId == currentUser.Id);
 
+            userProducts.RemoveAll(x => x.IsOrdered);
+
             List<CartProductViewModel> cartProducts = new List<CartProductViewModel>();
             foreach (var item in userProducts)
             {
@@ -67,14 +69,25 @@ namespace CartApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddToCart(CartProductViewModel model)//int? productId, int count
-        {                                                                       //stackowanie
-            var user = await GetCurrentUserAsync();
-            var product = new CartProduct { ProductId = model.Id, UserId = user.Id, Count = model.count };
-
+        public async Task<IActionResult> AddToCart(CartProductViewModel model)
+        {   
             if (ModelState.IsValid)
             {
-                _context.Add(product);
+                var user = await GetCurrentUserAsync();
+                var cartProductSet = await _context.CartProductSet.ToListAsync();
+                var cartProduct = cartProductSet.Find(x => x.ProductId == model.Id && x.UserId==user.Id && x.IsOrdered==false);
+                if (cartProduct != null)
+                {
+                    cartProduct.Count += model.count;
+                    _context.Attach(cartProduct);
+                    _context.Entry(cartProduct).Property(x=>x.Count).IsModified=true;
+                }
+                else
+                {
+                    var product = new CartProduct { ProductId = model.Id, UserId = user.Id, Count = model.count };
+                    _context.Add(product);
+                }
+
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -97,9 +110,7 @@ namespace CartApp.Controllers
                 var currentUser = await GetCurrentUserAsync();
 
                 order.Products = cartProductSet.FindAll(x => x.UserId == currentUser.Id);
-
-                //usuwanie id przedmiotu i usera
-
+                order.Products.ForEach(x => x.IsOrdered = true);
                 _context.Add(order);
                 await _context.SaveChangesAsync();
                 return View("OrderSent");
@@ -130,6 +141,28 @@ namespace CartApp.Controllers
             }
 
             return View(order);
+        }
+
+       
+        public async Task<IActionResult> DeleteCartItem(int id)
+        {
+            var products = await _context.CartProductSet.ToListAsync();
+            var product = products.Find(x => x.ProductId == id);
+            _context.CartProductSet.Remove(product);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> DeleteCartOrder(int id)
+        {
+            var orders = await _context.OrdersSet
+                .Include(x => x.Products)
+                .ToListAsync();
+            var order=orders.Find(x=> x.Id==id);
+            _context.CartProductSet.RemoveRange(order.Products);
+            _context.OrdersSet.Remove(order);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(ListOrders));
         }
     }
 }

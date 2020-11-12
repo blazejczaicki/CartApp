@@ -16,10 +16,10 @@
                 <input type="hidden" asp-for="@Model[i].UserId" />
                 <input type="hidden" asp-for="@Model[i].UserName" />
                 <input asp-for="@Model[i].IsSelected" class="form-check-input" />
-            </div>
-                <label class="form-check-label">
+                <label class="form-check-label" asp-for="@Model[i].IsSelected">
                     @Model[i].UserName
                 </label>
+            </div>
             }
         </div>
         <div class="card-footer">

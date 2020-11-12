@@ -8,8 +8,9 @@ namespace CartApp.Models
     public class CartProduct
     {
         public int Id { get; set; }     
-        public string UserId { get; set; }      //ewentualnie mail
-        public int ProductId { get; set; }      //nazwa jeszcze
+        public string UserId { get; set; }      
+        public int ProductId { get; set; }      
         public int Count { get; set; }
+        public bool IsOrdered { get; set; }
     }
 }
