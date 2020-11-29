@@ -13,6 +13,9 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CartApp.Controllers
 {
+    /// <summary>
+    /// Controller class for manage products shop.
+    /// </summary>
     [Authorize(Roles = "Admin")]
     public class ProductsController : Controller
     {
@@ -25,14 +28,18 @@ namespace CartApp.Controllers
             this._hostEnvironment = hostEnvironment;
         }
 
-        // GET: Products
+        /// <summary>
+        /// Show products.
+        /// </summary>
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             return View(await _context.ProductSet.ToListAsync());
         }
 
-        // GET: Products/Details/5
+        /// <summary>
+        /// Show details.
+        /// </summary>
         [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
@@ -51,15 +58,17 @@ namespace CartApp.Controllers
             return View(product);
         }
 
-        // GET: Products/Create
+        /// <summary>
+        /// Show create menu.
+        /// </summary>
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Products/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Create product.
+        /// </summary>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Price, ImageFile")] Product product)
@@ -82,7 +91,9 @@ namespace CartApp.Controllers
             return View(product);
         }
 
-        // GET: Products/Edit/5
+        /// <summary>
+        /// Show edit menu of product.
+        /// </summary>
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -98,9 +109,9 @@ namespace CartApp.Controllers
             return View(product);
         }
 
-        // POST: Products/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Edit product.
+        /// </summary>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price")] Product product)
@@ -133,7 +144,9 @@ namespace CartApp.Controllers
             return View(product);
         }
 
-        // GET: Products/Delete/5
+        /// <summary>
+        /// Show remove menu of product.
+        /// </summary>
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -151,7 +164,9 @@ namespace CartApp.Controllers
             return View(product);
         }
 
-        // POST: Products/Delete/5
+        /// <summary>
+        /// Remove product.
+        /// </summary>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -162,6 +177,9 @@ namespace CartApp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        /// <summary>
+        /// Check product exist.
+        /// </summary>
         private bool ProductExists(int id)
         {
             return _context.ProductSet.Any(e => e.Id == id);

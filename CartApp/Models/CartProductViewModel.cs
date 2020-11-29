@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace CartApp.Models
 {
+    /// <summary>
+    /// Class to store cart product data from view.
+    /// </summary>
     public class CartProductViewModel
     {
         public int Id { get; set; }

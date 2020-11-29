@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace CartApp.Models
 {
+    /// <summary>
+    /// Class to store order data from database.
+    /// </summary>
     public class Order
     {
         public int Id { get; set; }

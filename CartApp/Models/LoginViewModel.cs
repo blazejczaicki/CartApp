@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace CartApp.Models
 {
+    /// <summary>
+    /// Class to store user role data from view.
+    /// </summary>
     public class LoginViewModel
     {
         [Required]

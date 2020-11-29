@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['registerviewmodel_22',['RegisterViewModel',['../class_cart_app_1_1_models_1_1_register_view_model.html',1,'CartApp::Models']]]
+  ['homecontroller_72',['HomeController',['../class_cart_app_1_1_controllers_1_1_home_controller.html',1,'CartApp.Controllers.HomeController'],['../class_cart_app_1_1_controllers_1_1_home_controller.html#a910ba9bf232b40a108e6f4d833a4968b',1,'CartApp.Controllers.HomeController.HomeController()']]],
+  ['homecontroller_2ecs_73',['HomeController.cs',['../_home_controller_8cs.html',1,'']]]
 ];

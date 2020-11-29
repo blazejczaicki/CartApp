@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace CartApp.Models
 {
+    /// <summary>
+    /// Class to store edit user role data from view.
+    /// </summary>
     public class EditRoleViewModel
     {
         public string Id { get; set; }

@@ -1,6 +1,11 @@
 var searchData=
 [
-  ['shopcartdbcontext_23',['ShopCartDbContext',['../class_cart_app_1_1_data_1_1_shop_cart_db_context.html',1,'CartApp::Data']]],
-  ['shopcartdbcontextmodelsnapshot_24',['ShopCartDbContextModelSnapshot',['../class_cart_app_1_1_migrations_1_1_shop_cart_db_context_model_snapshot.html',1,'CartApp::Migrations']]],
-  ['startup_25',['Startup',['../class_cart_app_1_1_startup.html',1,'CartApp']]]
+  ['id_74',['Id',['../class_cart_app_1_1_models_1_1_account.html#a88ad4039b349a4c8f138f2ec1d89aa8e',1,'CartApp.Models.Account.Id()'],['../class_cart_app_1_1_models_1_1_cart_product.html#af3dc43d86b58263e6789ce2de3a86ad1',1,'CartApp.Models.CartProduct.Id()'],['../class_cart_app_1_1_models_1_1_cart_product_view_model.html#a3638212c18f7b8951dde07a4d8d78f0c',1,'CartApp.Models.CartProductViewModel.Id()'],['../class_cart_app_1_1_models_1_1_edit_role_view_model.html#aa069021143cb45539fc4648d018ff3cc',1,'CartApp.Models.EditRoleViewModel.Id()'],['../class_cart_app_1_1_models_1_1_order.html#ae5357456d2065fc256c33b13689ef2c0',1,'CartApp.Models.Order.Id()'],['../class_cart_app_1_1_models_1_1_product.html#a70972cd09053a71ef29476e38cb3b306',1,'CartApp.Models.Product.Id()']]],
+  ['image_75',['Image',['../class_cart_app_1_1_models_1_1_product.html#a44ba9a3c4d7fe1cf505266808a7fca82',1,'CartApp.Models.Product.Image()'],['../class_cart_app_1_1_models_1_1_cart_product_view_model.html#af24f31f7a6ec6eeb69c26a1aeecbb72a',1,'CartApp.Models.CartProductViewModel.image()']]],
+  ['imagefile_76',['ImageFile',['../class_cart_app_1_1_models_1_1_product.html#a5da68274a0a65d1e8ae0579a60694ebb',1,'CartApp::Models::Product']]],
+  ['index_77',['Index',['../class_cart_app_1_1_controllers_1_1_cart_controller.html#ae72699cd1b7c96da80e303567aa11536',1,'CartApp.Controllers.CartController.Index()'],['../class_cart_app_1_1_controllers_1_1_home_controller.html#a5a65a6e212cbc1fd6a13616c36809e66',1,'CartApp.Controllers.HomeController.Index()'],['../class_cart_app_1_1_controllers_1_1_products_controller.html#ad26721b6468ba8516e2297f5cbff0747',1,'CartApp.Controllers.ProductsController.Index()']]],
+  ['index_2ecshtml_2eg_2ecs_78',['Index.cshtml.g.cs',['../_cart_2_index_8cshtml_8g_8cs.html',1,'(Global Namespace)'],['../_home_2_index_8cshtml_8g_8cs.html',1,'(Global Namespace)'],['../_products_2_index_8cshtml_8g_8cs.html',1,'(Global Namespace)']]],
+  ['init_79',['Init',['../class_cart_app_1_1_migrations_1_1_init.html',1,'CartApp::Migrations']]],
+  ['isordered_80',['IsOrdered',['../class_cart_app_1_1_models_1_1_cart_product.html#a86a10ae93113248a0229159a54a9181a',1,'CartApp::Models::CartProduct']]],
+  ['isselected_81',['IsSelected',['../class_cart_app_1_1_models_1_1_user_role_view_model.html#afc92133eec03ebad7834fa835131fdce',1,'CartApp::Models::UserRoleViewModel']]]
 ];

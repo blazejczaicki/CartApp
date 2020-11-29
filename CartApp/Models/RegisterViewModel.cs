@@ -6,6 +6,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CartApp.Models
 {
+    /// <summary>
+    /// Class to store register data from view.
+    /// </summary>
     public class RegisterViewModel
     {
         [Required]

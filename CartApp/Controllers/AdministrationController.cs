@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CartApp.Controllers
 {
+    /// <summary>
+    /// Controller class for manage administration options.
+    /// </summary>
     [Authorize(Roles = "Admin")]
     public class AdministrationController : Controller
     {
@@ -21,6 +24,9 @@ namespace CartApp.Controllers
             this.userManager = userManager;
         }
 
+        /// <summary>
+        /// Show user list.
+        /// </summary>
         [HttpGet]
         public IActionResult ListUsers()
         {
@@ -28,12 +34,18 @@ namespace CartApp.Controllers
             return View(users);
         }
 
+        /// <summary>
+        /// Show create role menu.
+        /// </summary>
         [HttpGet]
         public IActionResult CreateRole()
         {
             return View();
         }
 
+        /// <summary>
+        /// Create role with given data.
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> CreateRole(CreateRoleViewModel model)
         {
@@ -52,6 +64,9 @@ namespace CartApp.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// Show list roles.
+        /// </summary>
         [HttpGet]
         public IActionResult ListRoles()
         {
@@ -59,7 +74,9 @@ namespace CartApp.Controllers
             return View(roles);
         }
 
-
+        /// <summary>
+        /// Remove users.
+        /// </summary>
         public async Task<IActionResult> DeleteUser(string id)
         {
             var user = await userManager.FindByIdAsync(id);
@@ -86,6 +103,9 @@ namespace CartApp.Controllers
             }
         }
 
+        /// <summary>
+        /// Show edit user role menu.
+        /// </summary>
         [HttpGet]
         public async Task<IActionResult> EditRole(string id)
         {
@@ -113,7 +133,9 @@ namespace CartApp.Controllers
             return View(model);
         }
 
-
+        /// <summary>
+        /// Edit role by data.
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> EditRole(EditRoleViewModel model)
         {
@@ -142,6 +164,9 @@ namespace CartApp.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// Show edit users in role menu.
+        /// </summary>
         [HttpGet]
         public async Task<IActionResult> EditUsersInRole(string roleId)
         {
@@ -178,6 +203,9 @@ namespace CartApp.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// Edit users in role.
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> EditUsersInRole(List<UserRoleViewModel> model, string roleId)
         {

@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CartApp.Controllers
 {
+    /// <summary>
+    /// Controller class for manage accounts.
+    /// </summary>
     public class AccountController : Controller
     {
         private readonly UserManager<IdentityUser> userManager;
@@ -20,12 +23,18 @@ namespace CartApp.Controllers
             this.signInManager = signInManager;
         }
 
+        /// <summary>
+        /// Show register menu.
+        /// </summary>
         [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
 
+        /// <summary>
+        /// Register account.
+        /// </summary>
         [HttpPost]
         public async  Task<IActionResult> Register(RegisterViewModel model)
         {
@@ -52,13 +61,19 @@ namespace CartApp.Controllers
 
             return View(model);
         }
-        
+
+        /// <summary>
+        /// Show login menu.
+        /// </summary>
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
 
+        /// <summary>
+        /// Login user.
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
         {
@@ -83,7 +98,10 @@ namespace CartApp.Controllers
 
             return View(model);
         }
-        
+
+        /// <summary>
+        /// Logout user.
+        /// </summary>
         [HttpPost]
         public async  Task<IActionResult> Logout()
         {
@@ -91,6 +109,9 @@ namespace CartApp.Controllers
             return RedirectToAction("index", "home");
         }
 
+        /// <summary>
+        /// Show access denied.
+        /// </summary>
         [HttpGet]
         [AllowAnonymous]
         public IActionResult AccessDenied()

@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace CartApp.Data
 {
+    /// <summary>
+    /// Class for create database.
+    /// </summary>
     public class ShopCartDbContext:IdentityDbContext
     {
         public ShopCartDbContext(DbContextOptions<ShopCartDbContext> options)

@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace CartApp.Models
 {
+    /// <summary>
+    /// Class to store product data from database.
+    /// </summary>
     public class Product
     {
         public int Id { get; set; }

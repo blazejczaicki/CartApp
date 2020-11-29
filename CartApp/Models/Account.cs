@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace CartApp.Models
 {
+    /// <summary>
+    /// Class to store account data from database. Not used.
+    /// </summary>
     public class Account
     {
         public int Id { get; set; }

@@ -9,6 +9,9 @@ using CartApp.Models;
 
 namespace CartApp.Controllers
 {
+    /// <summary>
+    /// Default controller class.
+    /// </summary>
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -18,16 +21,25 @@ namespace CartApp.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Show main page.
+        /// </summary>
         public IActionResult Index()
         {
             return View();
         }
 
+        /// <summary>
+        /// Show default privacy.
+        /// </summary>
         public IActionResult Privacy()
         {
             return View();
         }
 
+        /// <summary>
+        /// Show default error.
+        /// </summary>
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

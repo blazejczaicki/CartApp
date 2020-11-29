@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CartApp.Models
 {
+    /// <summary>
+    /// Class to store create user role data from view.
+    /// </summary>
     public class CreateRoleViewModel
     {
         [Required]

@@ -12,6 +12,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CartApp.Controllers
 {
+    /// <summary>
+    /// Controller class for manage cart.
+    /// </summary>
     [Authorize]
     public class CartController : Controller
     {
@@ -24,8 +27,14 @@ namespace CartApp.Controllers
             this.userManager = userManager;
         }
 
+        /// <summary>
+        /// Get current user.
+        /// </summary>
         private Task<IdentityUser> GetCurrentUserAsync() => userManager.GetUserAsync(HttpContext.User);
 
+        /// <summary>
+        /// Show user cart.
+        /// </summary>
         public async Task<IActionResult> Index()
         {
             var cartProductSet= await  _context.CartProductSet.ToListAsync();
@@ -54,6 +63,9 @@ namespace CartApp.Controllers
             return View(cartProducts);
         }
 
+        /// <summary>
+        /// Show add to cart product menu.
+        /// </summary>
         [HttpGet]
         public async Task<IActionResult> AddToCart(int? id)
         {
@@ -68,6 +80,9 @@ namespace CartApp.Controllers
             return View(product);
         }
 
+        /// <summary>
+        /// Add product to cart.
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> AddToCart(CartProductViewModel model)
         {   
@@ -94,12 +109,18 @@ namespace CartApp.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Show release order menu.
+        /// </summary>
         [HttpGet]
         public IActionResult ReleaseOrder()
         {
             return View();
         }
 
+        /// <summary>
+        /// Release order.
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> ReleaseOrder([Bind("FirstName,LastName,Country, StreetAdress, Email")] Order order)
         {
@@ -118,6 +139,9 @@ namespace CartApp.Controllers
             return View(order);
         }
 
+        /// <summary>
+        /// Show list of orders.
+        /// </summary>
         public async Task<IActionResult> ListOrders()
         {
             return View(await _context.OrdersSet
@@ -125,6 +149,9 @@ namespace CartApp.Controllers
                 .ToListAsync());
         }
 
+        /// <summary>
+        /// Show order details.
+        /// </summary>
         public async Task<IActionResult> OrderDetails(int? id)
         {
             if (id == null)
@@ -143,7 +170,9 @@ namespace CartApp.Controllers
             return View(order);
         }
 
-       
+        /// <summary>
+        /// Remove cart item.
+        /// </summary>
         public async Task<IActionResult> DeleteCartItem(int id)
         {
             var products = await _context.CartProductSet.ToListAsync();
@@ -153,6 +182,9 @@ namespace CartApp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        /// <summary>
+        /// Remove cart order.
+        /// </summary>
         public async Task<IActionResult> DeleteCartOrder(int id)
         {
             var orders = await _context.OrdersSet
